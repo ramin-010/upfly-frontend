@@ -270,52 +270,52 @@ app.post('/upload',
     const edges =  [...mainEdges, ...cloudEdges] ;
 
   return (
-    <section id="solution" className="section" style={{ background: 'linear-gradient(to bottom, #edf1f5  , #f8fafc, #ffff)' }}>
-      <div className="container">
+    <section id="solution" className="section py-12 md:py-16 lg:py-20" style={{ background: 'linear-gradient(to bottom, #edf1f5  , #f8fafc, #ffff)' }}>
+      <div className="container px-4">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-12 lg:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="heading-lg mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
             Production Ready in <span className="text-gradient">30 Minutes</span>
           </h2>
-          <p className="text-body max-w-3xl mx-auto mb-8">
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-6 md:mb-8">
             Skip weeks of development. Upfly provides everything you need for complete
             file handling in a single middleware.
           </p>
 
           {/* Installation Instructions */}
-          <div className="bg-gradient-to-br from-white via-blue-50 to-purple-50 rounded-xl p-8 mb-8 border border-blue-200 shadow-lg">
+          <div className="bg-gradient-to-br from-white via-blue-50 to-purple-50 rounded-xl p-4 md:p-6 lg:p-8 mb-6 md:mb-8 border border-blue-200 shadow-lg" id="npm-i">
 
-            <div className="grid md:grid-cols-3 gap-4 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
               {commands.map((cmd) => (
-                <div key={cmd.type} className="bg-white/80 backdrop-blur-sm rounded-xl p-5 border border-blue-100 shadow-sm">
-                  <div className="text-sm font-semibold text-gray-700 mb-3">{cmd.type}</div>
+                <div key={cmd.type} className="bg-white/80 backdrop-blur-sm rounded-xl p-4 md:p-5 border border-blue-100 shadow-sm">
+                  <div className="text-xs md:text-sm font-semibold text-gray-700 mb-2 md:mb-3">{cmd.type}</div>
                   <button
                     onClick={() => copyToClipboard(cmd.command, cmd.type)}
-                    className={`w-full text-left text-sm px-4 py-3 rounded-lg transition-all duration-200 flex items-center gap-3 font-mono ${
+                    className={`w-full text-left text-xs md:text-sm px-3 md:px-4 py-2 md:py-3 rounded-lg transition-all duration-200 flex items-center gap-2 md:gap-3 font-mono ${
                       copiedCommand === cmd.type
                         ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg'
                         : 'bg-gradient-to-r from-gray-50 to-gray-100 hover:from-blue-50 hover:to-purple-50 text-gray-700 border border-gray-200 hover:border-blue-300'
                     }`}
                   >
-                    <code className="flex-1">{cmd.command}</code>
+                    <code className="flex-1 break-all">{cmd.command}</code>
                     {copiedCommand === cmd.type ? (
-                      <Check size={18} className="text-white" />
+                      <Check size={16} className="md:w-[18px] md:h-[18px] text-white flex-shrink-0" />
                     ) : (
-                      <Copy size={18} className="text-gray-500" />
+                      <Copy size={16} className="md:w-[18px] md:h-[18px] text-gray-500 flex-shrink-0" />
                     )}
                   </button>
                 </div>
               ))}
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-blue-100">
-              <div className="grid md:grid-cols-2 gap-6 text-sm">
+            <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-blue-100">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-xs md:text-sm">
                 <div className="flex items-start gap-3">
                   <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-1 flex-shrink-0"></div>
                   <div>
@@ -338,22 +338,22 @@ app.post('/upload',
 
         {/* Code Examples Section Header */}
         <motion.div
-          className="text-center mb-8"
+          className="text-center mb-6 md:mb-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">Implementation Examples</h3>
-          <p className="text-lg text-gray-600">Ready-to-use code for integrating Upfly into your applications</p>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">Implementation Examples</h3>
+          <p className="text-base md:text-lg text-gray-600">Ready-to-use code for integrating Upfly into your applications</p>
         </motion.div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8" >
+        <div className="flex flex-wrap justify-center gap-2 mb-6 md:mb-8" >
           {codeExamples.map((example, index) => (
             <button
               key={index}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
+              className={`px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold transition-all duration-200 text-sm md:text-base ${
                 activeTab === index
                   ? 'bg-gradient-to-r from-[#F40009] via-[#E60008] to-[#C70008] text-white shadow-lg scale-105'
                   : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
@@ -366,10 +366,10 @@ app.post('/upload',
         </div>
 
         {/* Active Code Example */}
-        <div className="card-elevated p-8  mb-16">
-          <div className="text-center mb-6">
-            <h4 className="text-xl font-bold text-gray-900 mb-2">{codeExamples[activeTab].title}</h4>
-            <p className="text-gray-600">{codeExamples[activeTab].description}</p>
+        <div className="card-elevated p-4 md:p-6 lg:p-8 mb-8 md:mb-12 lg:mb-16">
+          <div className="text-center mb-4 md:mb-6">
+            <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-2">{codeExamples[activeTab].title}</h4>
+            <p className="text-sm md:text-base text-gray-600">{codeExamples[activeTab].description}</p>
           </div>
 
           {/* Cloud Provider Sub-tabs (only for Cloud Storage tab) */}
@@ -445,7 +445,7 @@ app.post('/upload',
           </div>
         </motion.div> */}
 
-             <div className="container">
+             <div className="">
         <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
           <h2 className="heading-lg mb-6">How Upfly Works <span className="text-gradient">Under the Hood</span></h2>
           <p className="text-body max-w-3xl mx-auto mb-6">Complete pipeline architecture with stream-based processing, automatic fallback, and multi-cloud support.</p>
@@ -454,63 +454,81 @@ app.post('/upload',
           </button> */}
         </motion.div>
 
-        <motion.div className="bg-white rounded-2xl border-2 border-gray-200 shadow-2xl overflow-hidden" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} viewport={{ once: true }} style={{ height: '950px' }}>
-          <div className="relative w-full h-full" style={{ pointerEvents: 'none' }} id='architecture'>
-            <ReactFlow
-              nodes={nodes}
-              edges={edges}
-              fitView
-              nodesDraggable={false}
-              nodesConnectable={false}
-              elementsSelectable={false}
-              zoomOnScroll={false}
-              panOnScroll={false}
-              zoomOnDoubleClick={false}
-              panOnDrag={false}
-              onWheel={(event) => event.stopPropagation()}
-              className="react-flow-container"
-            >
-              <Background variant={BackgroundVariant.Dots} gap={20} size={1.5} color="#e2e8f0" />
-            </ReactFlow>
-          </div>
-        </motion.div>
+       <motion.div
+  className="bg-white rounded-2xl border-2 border-gray-200 shadow-2xl overflow-hidden 
+             h-[500px] sm:h-[700px] md:h-[900px] mx-auto max-w-6xl"
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  viewport={{ once: true }}
+>
+  <div
+    className="relative w-full h-full scale-[0.85] sm:scale-100 flex items-center justify-center"
+    style={{ pointerEvents: 'none' }}
+    id="architecture"
+  >
+    <ReactFlow
+      nodes={nodes}
+      edges={edges}
+      fitView
+      fitViewOptions={{ padding: 0.2, includeHiddenNodes: false }}
+      nodesDraggable={false}
+      nodesConnectable={false}
+      elementsSelectable={false}
+      zoomOnScroll={false}
+      panOnScroll={false}
+      zoomOnDoubleClick={false}
+      panOnDrag={false}
+      onWheel={(event) => event.stopPropagation()}
+      className="react-flow-container"
+      style={{ width: '100%', height: '100%' }}
+    >
+      <Background
+        variant={BackgroundVariant.Dots}
+        gap={20}
+        size={1.5}
+        color="#e2e8f0"
+      />
+    </ReactFlow>
+  </div>
+</motion.div>
 
         {/* Final CTA Section */}
-             <motion.div 
-                  className="bg-gradient-to-b from-[#F40009] via-[#E60008] to-[#C70008] rounded-3xl p-12 mt-10 text-white relative overflow-hidden text-center"
+            <motion.div 
+                  className="bg-gradient-to-b  from-[#F40009] via-[#E60008] to-[#C70008] rounded-2xl md:rounded-3xl p-6 md:p-10 lg:p-12 mt-6 md:mt-10 text-white relative overflow-hidden text-center"
                   initial={{ opacity: 0, y: 30 }} 
                   whileInView={{ opacity: 1, y: 0 }} 
                   transition={{ duration: 0.6, delay: 0.6 }} 
                   viewport={{ once: true }}
                 >
-                  <div className="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full -mr-48 -mt-48"></div>
-                  <div className="absolute bottom-0 left-0 w-96 h-96 bg-black opacity-5 rounded-full -ml-48 -mb-48"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-white opacity-5 rounded-full -mr-32 md:-mr-48 -mt-32 md:-mt-48"></div>
+                  <div className="absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-black opacity-5 rounded-full -ml-32 md:-ml-48 -mb-32 md:-mb-48"></div>
                   
-                  <div className="relative z-10 max-w-3xl mx-auto">
-                    <h3 className="text-3xl lg:text-4xl font-bold mb-6">
+                  <div className="relative z-10 max-w-3xl  mx-auto">
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
                       Ready to Build Production-Ready File Uploads?
                     </h3>
-                    <p className="text-xl text-blue-100 mb-8">
+                    <p className="text-base md:text-lg lg:text-xl text-blue-100 mb-6 md:mb-8">
                       Join developers who've eliminated weeks of boilerplate with Upfly's complete file handling solution.
                     </p>
         
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
                       <button
                         onClick={() => document.getElementById('build')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="bg-gray-100 text-black px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-2xl transition-all hover:scale-105"
+                        className="bg-gray-100 text-black px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-2xl transition-all hover:scale-105 text-sm md:text-base"
                         
                      >
                         Start Building Now
-                        <ArrowRight size={20} />
+                        <ArrowRight size={18} className="md:w-5 md:h-5" />
                       </button>
                       <a
                         href="https://www.npmjs.com/package/upfly"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white/20 transition-all hover:scale-105"
+                        className="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white/20 transition-all hover:scale-105 text-sm md:text-base"
                       >
                         View on npm
-                        <ArrowRight size={20} />
+                        <ArrowRight size={18} className="md:w-5 md:h-5" />
                       </a>
                     </div>
                   </div>

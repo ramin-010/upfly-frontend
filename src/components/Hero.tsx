@@ -231,7 +231,7 @@ const Hero = () => {
 
           {/* Right Column - Code Carousel */}
           <motion.div
-            className="relative min-h-[700px] pl-8 lg: min-w-[42vw]"
+            className="relative min-h-[700px] pl-8 md:w-[42vw] w-[98vw] right-6"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 4, delay: 0.3 }}
@@ -243,11 +243,11 @@ const Hero = () => {
             >
               ☁️ Cloud Ready
             </motion.div>
-
-            <div className="relative top-[90px] bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-xl rounded-2xl p-6 border border-white/40 shadow-2xl">
+              {/* code container */}
+            <div className="relative top-[90px] bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-xl rounded-2xl p-6 border border-white/40 shadow-2xl  ">
               {/* Code Header */}
 
-              <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-200">
+              <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-200 ">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                   <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -318,7 +318,7 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
-                    className="p-6"
+                    className="lg:p-6 p-0"
                   >
                     <pre className="font-mono text-sm text-gray-800 leading-relaxed">
                       {renderCode(codeExamples[currentSlide].code, codeExamples[currentSlide].highlight)}
