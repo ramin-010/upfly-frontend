@@ -270,8 +270,8 @@ app.post('/upload',
     const edges =  [...mainEdges, ...cloudEdges] ;
 
   return (
-    <section id="solution" className="section py-12 md:py-16 lg:py-20" style={{ background: 'linear-gradient(to bottom, #edf1f5  , #f8fafc, #ffff)' }}>
-      <div className="container px-4">
+    <section id="npm-i" className="section py-12 md:py-16 lg:py-20" style={{ background: 'linear-gradient(to bottom, #edf1f5  , #f8fafc, #ffff)' }}>
+      <div className="container px-4" >
         {/* Header */}
         <motion.div
           className="text-center mb-8 md:mb-12 lg:mb-16"
@@ -279,6 +279,7 @@ app.post('/upload',
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
+          
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
             Production Ready in <span className="text-gradient">30 Minutes</span>
@@ -289,7 +290,7 @@ app.post('/upload',
           </p>
 
           {/* Installation Instructions */}
-          <div className="bg-gradient-to-br from-white via-blue-50 to-purple-50 rounded-xl p-4 md:p-6 lg:p-8 mb-6 md:mb-8 border border-blue-200 shadow-lg" id="npm-i">
+          <div className="bg-gradient-to-br from-white via-blue-50 to-purple-50 rounded-xl p-4 md:p-6 lg:p-8 mb-6 md:mb-8 border border-blue-200 shadow-lg" >
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
               {commands.map((cmd) => (

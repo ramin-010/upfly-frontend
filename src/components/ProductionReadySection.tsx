@@ -86,7 +86,7 @@ const ProductionReadySection: React.FC = () => {
   const edges = mainEdges;
 
   return (
-    <section id="npm-i" className="section" style={{ background: 'linear-gradient(to bottom right, #f0fdf4, #ffffff, #eff6ff)' }}>
+    <section  className="section" style={{ background: 'linear-gradient(to bottom right, #f0fdf4, #ffffff, #eff6ff)' }}>
       <div className="container">
         {/* Header */}
         <motion.div
