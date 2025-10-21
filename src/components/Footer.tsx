@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
           <div className="border-t border-gray-800 pt-4 md:pt-6 mt-6 md:mt-8">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3 md:gap-4">
               <div className="text-gray-400 text-xs md:text-sm text-center sm:text-left">
-                © 2024 Upfly. Built with ❤️ for developers.
+                © 2025 Upfly. Built with ❤️ for developers.
               </div>
               <button
                 onClick={scrollToTop}
