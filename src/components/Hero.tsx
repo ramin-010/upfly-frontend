@@ -151,24 +151,24 @@ const Hero = () => {
           <div className="space-y-8">
             {/* Trust Badge */}
             <motion.div
-              className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-6 py-3 shadow-lg"
+              className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-2 md:px-6    py-3 shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 md:gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-gray-700 font-semibold text-sm">Production Ready</span>
+                <span className="text-gray-700 font-semibold text-xs md:text-sm">Production Ready</span>
               </div>
               <div className="w-px h-4 bg-gray-300"></div>
-              <div className="flex items-center gap-2 text-gray-600">
+              <div className="flex items-center gap-1 md:gap-2 text-gray-600">
                 <Zap size={14} />
-                <span className="font-medium text-sm">Stream-Based</span>
+                <span className="font-medium text-xs md:text-sm">Stream-Based</span>
               </div>
               <div className="w-px h-4 bg-gray-300"></div>
-              <div className="flex items-center gap-1 text-gray-600">
+              <div className="flex items-center gap-1 md:gap-2 text-gray-600">
                 <Cloud size={14} />
-                <span className="font-medium text-sm">Multi-Cloud</span>
+                <span className="font-medium text-xs md:text-sm">Multi-Cloud</span>
               </div>
             </motion.div>
 
@@ -179,13 +179,13 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-5xl lg:text-6xl pb-2 font-bold text-gray-900 leading-tight">
+              <h1 className="text-5 xl lg:text-6xl pb-2 font-bold text-gray-900 leading-tight">
                 Complete File Handling Solution 
               </h1>
-              <span className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-[2rem] font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Just One Middleware.
               </span>
-              <p className="text-xl text-gray-600 max-w-2xl">
+              <p className="text-large p-2 md:p-0 md:text-xl text-gray-600 max-w-2xl">
                 Handle file uploads from <strong className="text-gray-900">interception to storage</strong>. 
                 Stream-based processing, automatic image optimization, multi-cloud storage, and built-in reliability 
                 — the ultimate complete file handling library you need.
@@ -200,7 +200,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               {enterpriseFeatures.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-200">
+                <div key={index} className="flex  items-start gap-3 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-200">
                   <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
                     <feature.icon className="text-white" size={18} />
                   </div>
