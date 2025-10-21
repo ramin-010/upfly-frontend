@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Professional Color System */
+    --color-primary: #0066cc;
+    --color-primary-dark: #004499;
+    --color-secondary: #1a1a1a;
+    --color-accent: #00d4aa;
+    --color-warning: #ff6b35;
+    --color-success: #00c851;
+    --color-error: #ff4444;
+    
+    /* Neutral Grays */
+    --color-gray-50: #f8fafc;
+    --color-gray-100: #f1f5f9;
+    --color-gray-200: #e2e8f0;
+    --color-gray-300: #cbd5e1;
+    --color-gray-400: #94a3b8;
+    --color-gray-500: #64748b;
+    --color-gray-600: #475569;
+    --color-gray-700: #334155;
+    --color-gray-800: #1e293b;
+    --color-gray-900: #0f172a;
+    
+    /* Typography Scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.75rem;
+    
+    /* Spacing Scale */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-gray-900);
+    background: #ffffff;
+    overflow-x: hidden;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+  
+  h1 {
+    font-size: var(--font-size-5xl);
+    font-weight: 800;
+  }
+  
+  h2 {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+  }
+  
+  h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+  }
+  
+  code, pre {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+  }
+}
+
+@layer components {
+  /* Layout Components */
+  .section {
+    @apply py-24 lg:py-32;
+  }
+  
+  .section-sm {
+    @apply py-16 lg:py-20;
+  }
+  
+  .container {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+  
+  .container-sm {
+    @apply max-w-4xl mx-auto px-6 lg:px-8;
+  }
+  
+  /* Typography Components */
+  .heading-xl {
+    @apply text-5xl lg:text-6xl font-bold tracking-tight text-gray-900;
+  }
+  
+  .heading-lg {
+    @apply text-4xl lg:text-5xl font-bold tracking-tight text-gray-900;
+  }
+  
+  .heading-md {
+    @apply text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900;
+  }
+  
+  .text-lead {
+    @apply text-xl lg:text-2xl text-gray-600 leading-relaxed;
+  }
+  
+  .text-body {
+    @apply text-base lg:text-lg text-gray-600 leading-relaxed;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-accent {
+    @apply bg-gradient-to-r from-emerald-500 to-blue-600 bg-clip-text text-transparent;
+  }
+  
+  /* Button Components */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply btn bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-lg hover:shadow-xl hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-white text-gray-900 border-2 border-gray-200 hover:border-blue-600 hover:text-blue-600 focus:ring-blue-500 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-ghost {
+    @apply btn bg-transparent text-gray-700 hover:bg-gray-50 hover:text-gray-900;
+  }
+  
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+  
+  /* Card Components */
+  .card {
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .card-elevated {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+  }
+  
+  .card-glass {
+    @apply bg-white/80 backdrop-blur-xl rounded-xl border border-white/20 shadow-lg;
+  }
+  
+  /* Code Components */
+  .code-block {
+    @apply bg-gray-50 border border-gray-200 rounded-lg p-4 font-mono text-sm overflow-x-auto;
+  }
+  
+  .code-inline {
+    @apply bg-gray-100 text-gray-800 px-2 py-1 rounded font-mono text-sm;
+  }
+  
+  /* Utility Components */
+  .gradient-bg {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  }
+  
+  .gradient-mesh {
+    background: radial-gradient(circle at 25% 25%, #3b82f6 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #8b5cf6 0%, transparent 50%),
+                linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  }
+  
+  .border-gradient {
+    @apply relative;
+  }
+  
+  .border-gradient::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg p-px bg-gradient-to-r from-blue-500 to-purple-500;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+  
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
