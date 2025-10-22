@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Cloud, Shield } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -6,6 +6,19 @@ import { vscDarkPlus} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { CheckCircle } from 'lucide-react';
 
 const ProblemSection: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   const upflyWayCode = `// The Upfly way: One middleware, everything handled
 const { upflyUpload } = require('upfly');
 
@@ -121,6 +134,8 @@ app.post('/upload',
                 ⚠️ The Hidden Cost of Traditional File Handling
               </motion.div>
               
+
+
               <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight">
                 You're Wasting <span className="text-yellow-300">3-4 Weeks</span> Per Project
               </h3>
@@ -149,125 +164,236 @@ app.post('/upload',
 
           {/* Pain Points Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            <motion.div
-              className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-red-200 shadow-lg"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl md:text-2xl">😰</span>
+            {isMobile ? (
+              // first div start here 
+              <div className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-red-200 shadow-lg">
+                <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl md:text-2xl">😰</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">The Setup Nightmare</h4>
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                      Configure Multer storage, set up Sharp pipelines, initialize cloud SDKs, handle MIME types, 
+                      validate file sizes, manage temp directories... and that's just the beginning.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">The Setup Nightmare</h4>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                    Configure Multer storage, set up Sharp pipelines, initialize cloud SDKs, handle MIME types, 
-                    validate file sizes, manage temp directories... and that's just the beginning.
-                  </p>
+                <div className="bg-red-50 rounded-lg p-3 md:p-4 border border-red-100">
+                  <div className="text-xs md:text-sm text-red-700 font-mono">
+                    <div>✗ Manual Multer configuration</div>
+                    <div>✗ Sharp setup for each format</div>
+                    <div>✗ Cloud provider SDK integration</div>
+                    <div>✗ Error handling & fallbacks</div>
+                    <div>✗ Stream management for large files</div>
+                  </div>
                 </div>
-              </div>
-              <div className="bg-red-50 rounded-lg p-3 md:p-4 border border-red-100">
-                <div className="text-xs md:text-sm text-red-700 font-mono">
-                  <div>✗ Manual Multer configuration</div>
-                  <div>✗ Sharp setup for each format</div>
-                  <div>✗ Cloud provider SDK integration</div>
-                  <div>✗ Error handling & fallbacks</div>
-                  <div>✗ Stream management for large files</div>
+              </div> //end here
+              
+              
+            ) : (
+              <motion.div
+                className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-red-200 shadow-lg"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl md:text-2xl">😰</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">The Setup Nightmare</h4>
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                      Configure Multer storage, set up Sharp pipelines, initialize cloud SDKs, handle MIME types, 
+                      validate file sizes, manage temp directories... and that's just the beginning.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+                <div className="bg-red-50 rounded-lg p-3 md:p-4 border border-red-100">
+                  <div className="text-xs md:text-sm text-red-700 font-mono">
+                    <div>✗ Manual Multer configuration</div>
+                    <div>✗ Sharp setup for each format</div>
+                    <div>✗ Cloud provider SDK integration</div>
+                    <div>✗ Error handling & fallbacks</div>
+                    <div>✗ Stream management for large files</div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
 
-            <motion.div
-              className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-orange-200 shadow-lg"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl md:text-2xl">💸</span>
+            {isMobile ? (
+              //second start here
+              <div className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-orange-200 shadow-lg">
+                <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl md:text-2xl">💸</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">The Maintenance Burden</h4>
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                      Every project becomes a unique snowflake. Different configurations, different bugs, 
+                      different cloud providers. Switching providers? Start from scratch.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">The Maintenance Burden</h4>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                    Every project becomes a unique snowflake. Different configurations, different bugs, 
-                    different cloud providers. Switching providers? Start from scratch.
-                  </p>
+                <div className="bg-orange-50 rounded-lg p-3 md:p-4 border border-orange-100">
+                  <div className="text-xs md:text-sm text-orange-700 font-mono">
+                    <div>✗ Vendor lock-in with cloud SDKs</div>
+                    <div>✗ Inconsistent code across projects</div>
+                    <div>✗ No reusable patterns</div>
+                    <div>✗ Breaking changes in dependencies</div>
+                    <div>✗ Team onboarding complexity</div>
+                  </div>
                 </div>
-              </div>
-              <div className="bg-orange-50 rounded-lg p-3 md:p-4 border border-orange-100">
-                <div className="text-xs md:text-sm text-orange-700 font-mono">
-                  <div>✗ Vendor lock-in with cloud SDKs</div>
-                  <div>✗ Inconsistent code across projects</div>
-                  <div>✗ No reusable patterns</div>
-                  <div>✗ Breaking changes in dependencies</div>
-                  <div>✗ Team onboarding complexity</div>
+              </div>//end here
+              
+            ) : (
+              <motion.div
+                className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-orange-200 shadow-lg"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl md:text-2xl">💸</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">The Maintenance Burden</h4>
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                      Every project becomes a unique snowflake. Different configurations, different bugs, 
+                      different cloud providers. Switching providers? Start from scratch.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+                <div className="bg-orange-50 rounded-lg p-3 md:p-4 border border-orange-100">
+                  <div className="text-xs md:text-sm text-orange-700 font-mono">
+                    <div>✗ Vendor lock-in with cloud SDKs</div>
+                    <div>✗ Inconsistent code across projects</div>
+                    <div>✗ No reusable patterns</div>
+                    <div>✗ Breaking changes in dependencies</div>
+                    <div>✗ Team onboarding complexity</div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
 
-            <motion.div
-              className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-yellow-200 shadow-lg"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl md:text-2xl">⚡</span>
+            {isMobile ? (
+              //third here
+              <div className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-yellow-200 shadow-lg">
+                <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl md:text-2xl">⚡</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Performance Disasters</h4>
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                      Large files crash your server. Memory usage spikes. Event loop blocks. 
+                      Users get timeout errors. Your monitoring alerts go crazy.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Performance Disasters</h4>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                    Large files crash your server. Memory usage spikes. Event loop blocks. 
-                    Users get timeout errors. Your monitoring alerts go crazy.
-                  </p>
+                <div className="bg-yellow-50 rounded-lg p-3 md:p-4 border border-yellow-100">
+                  <div className="text-xs md:text-sm text-yellow-700 font-mono">
+                    <div>✗ Memory leaks with large files</div>
+                    <div>✗ Blocked event loop</div>
+                    <div>✗ No automatic streaming</div>
+                    <div>✗ Server crashes under load</div>
+                    <div>✗ Poor user experience</div>
+                  </div>
                 </div>
-              </div>
-              <div className="bg-yellow-50 rounded-lg p-3 md:p-4 border border-yellow-100">
-                <div className="text-xs md:text-sm text-yellow-700 font-mono">
-                  <div>✗ Memory leaks with large files</div>
-                  <div>✗ Blocked event loop</div>
-                  <div>✗ No automatic streaming</div>
-                  <div>✗ Server crashes under load</div>
-                  <div>✗ Poor user experience</div>
+              </div> //end here
+            ) : (
+              <motion.div
+                className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-yellow-200 shadow-lg"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl md:text-2xl">⚡</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Performance Disasters</h4>
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                      Large files crash your server. Memory usage spikes. Event loop blocks. 
+                      Users get timeout errors. Your monitoring alerts go crazy.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+                <div className="bg-yellow-50 rounded-lg p-3 md:p-4 border border-yellow-100">
+                  <div className="text-xs md:text-sm text-yellow-700 font-mono">
+                    <div>✗ Memory leaks with large files</div>
+                    <div>✗ Blocked event loop</div>
+                    <div>✗ No automatic streaming</div>
+                    <div>✗ Server crashes under load</div>
+                    <div>✗ Poor user experience</div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
 
-            <motion.div
-              className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-purple-200 shadow-lg"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl md:text-2xl">🔧</span>
+            {isMobile ? (
+              ///fourth here
+              <div className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-purple-200 shadow-lg">
+                <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl md:text-2xl">🔧</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Image Optimization Hell</h4>
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                      Manually configure Sharp for WebP, JPEG, PNG. Set quality levels. Handle format conversions. 
+                      Test on different devices. Repeat for every project.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Image Optimization Hell</h4>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                    Manually configure Sharp for WebP, JPEG, PNG. Set quality levels. Handle format conversions. 
-                    Test on different devices. Repeat for every project.
-                  </p>
+                <div className="bg-purple-50 rounded-lg p-3 md:p-4 border border-purple-100">
+                  <div className="text-xs md:text-sm text-purple-700 font-mono">
+                    <div>✗ Manual Sharp configuration</div>
+                    <div>✗ Format-specific pipelines</div>
+                    <div>✗ Quality optimization guesswork</div>
+                    <div>✗ No fallback for failed conversions</div>
+                    <div>✗ Inconsistent results</div>
+                  </div>
                 </div>
-              </div>
-              <div className="bg-purple-50 rounded-lg p-3 md:p-4 border border-purple-100">
-                <div className="text-xs md:text-sm text-purple-700 font-mono">
-                  <div>✗ Manual Sharp configuration</div>
-                  <div>✗ Format-specific pipelines</div>
-                  <div>✗ Quality optimization guesswork</div>
-                  <div>✗ No fallback for failed conversions</div>
-                  <div>✗ Inconsistent results</div>
+              </div> //end here
+            ) : (
+              <motion.div
+                className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-purple-200 shadow-lg"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl md:text-2xl">🔧</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Image Optimization Hell</h4>
+                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                      Manually configure Sharp for WebP, JPEG, PNG. Set quality levels. Handle format conversions. 
+                      Test on different devices. Repeat for every project.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+                <div className="bg-purple-50 rounded-lg p-3 md:p-4 border border-purple-100">
+                  <div className="text-xs md:text-sm text-purple-700 font-mono">
+                    <div>✗ Manual Sharp configuration</div>
+                    <div>✗ Format-specific pipelines</div>
+                    <div>✗ Quality optimization guesswork</div>
+                    <div>✗ No fallback for failed conversions</div>
+                    <div>✗ Inconsistent results</div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </div>
         </motion.div>
 
