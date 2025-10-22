@@ -87,17 +87,6 @@
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
   
-  /* Fix favicon transparency in browser tabs */
-  link[rel="icon"][type="image/png"] {
-    background: transparent !important;
-  }
-  
-  /* Ensure proper favicon rendering */
-  .favicon {
-    background: transparent !important;
-    opacity: 1 !important;
-  }
-  
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.2;

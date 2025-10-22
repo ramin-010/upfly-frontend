@@ -41,10 +41,10 @@ const Footer: React.FC = () => {
                 href="https://github.com/ramin-010/upfly"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg hover:shadow-lg"
               >
                 <Github size={18} className="md:w-5 md:h-5" />
-                <span className="text-xs md:text-sm">GitHub</span>
+                <span className="text-xs md:text-sm font-semibold">⭐ Star on GitHub</span>
               </a>
               <a
                 href="https://www.npmjs.com/package/upfly"

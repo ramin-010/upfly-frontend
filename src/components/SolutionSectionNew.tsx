@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { Copy, Check } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Github } from 'lucide-react';
+
 import ReactFlow, {
   type Node,
   type Edge,
@@ -514,14 +515,16 @@ app.post('/upload',
                     </p>
         
                     <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-                      <button
-                        onClick={() => document.getElementById('build')?.scrollIntoView({ behavior: 'smooth' })}
+                      <a
+                        href="https://github.com/ramin-010/upfly"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="bg-gray-100 text-black px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-2xl transition-all hover:scale-105 text-sm md:text-base"
-                        
-                     >
-                        Start Building Now
+
+                      ><Github size={18} className="md:w-5 md:h-5" />
+                        Support on GitHub 
                         <ArrowRight size={18} className="md:w-5 md:h-5" />
-                      </button>
+                      </a>
                       <a
                         href="https://www.npmjs.com/package/upfly"
                         target="_blank"
