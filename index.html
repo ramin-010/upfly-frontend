@@ -1,46 +1,143 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Essential Meta Tags -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🚀 Upfly - Complete File Handling Solution. Just One Middleware.</title>
-    <meta name="description" content="The all-in-one Express middleware that turns file upload chaos into a single line of code. Multi-cloud storage, image optimization, and bulletproof error handling." />
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Upfly - Complete File Handling Middleware for Express | Stream-Based Upload Solution</title>
+    <meta name="title" content="Upfly - Complete File Handling Middleware for Express | Stream-Based Upload Solution" />
+    <meta name="description" content="Upfly is the all-in-one Express middleware for file uploads. Stream-based processing, automatic image optimization with Sharp & WebP, multi-cloud storage (S3, Cloudinary, GCS), and production-ready error handling in one line of code." />
+    <meta name="keywords" content="file upload middleware, express file handling, multer alternative, stream processing, image optimization, sharp webp, cloud storage, s3 upload, cloudinary, google cloud storage, node.js file upload, express middleware, file handling library, image compression, multipart form data, production file upload" />
+    <meta name="author" content="Rinkal Kumar" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://upfly-frontend.vercel.app/" />
+    
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://upfly-frontend.vercel.app/" />
-    <meta property="og:title" content="🚀 Upfly - Complete File Handling Solution. Just One Middleware." />
-    <meta property="og:description" content="The all-in-one Express middleware that turns file upload chaos into a single line of code. Multi-cloud storage, image optimization, and bulletproof error handling." />
-    <meta property="og:image" content="https://upfly-frontend.vercel.app/upfly-og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Upfly - Complete File Handling Solution. Just One Middleware." />
+    <meta property="og:title" content="Upfly - Complete File Handling Middleware for Express" />
+    <meta property="og:description" content="The all-in-one Express middleware that turns file upload chaos into a single line of code. Stream-based processing, automatic image optimization, multi-cloud storage, and bulletproof error handling." />
+    <meta property="og:image" content="https://upfly-frontend.vercel.app/upfly-logo.png" />
+    <meta property="og:image:secure_url" content="https://upfly-frontend.vercel.app/upfly-logo.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Upfly - Complete File Handling Solution for Express.js" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:site_name" content="Upfly" />
     <meta property="og:locale" content="en_US" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://upfly-frontend.vercel.app/" />
-    <meta property="twitter:title" content="🚀 Upfly - Complete File Handling Solution. Just One Middleware." />
-    <meta property="twitter:description" content="The all-in-one Express middleware that turns file upload chaos into a single line of code. Multi-cloud storage, image optimization, and bulletproof error handling." />
-    <meta property="twitter:image" content="https://upfly-frontend.vercel.app/upfly-twitter-card.png" />
-    <meta property="twitter:image:alt" content="Upfly - Complete File Handling Solution. Just One Middleware." />
-    <meta property="twitter:creator" content="@upflyjs" />
-    <meta property="twitter:site" content="@upflyjs" />
-
-    <!-- Additional SEO -->
-    <meta name="keywords" content="file handling, express middleware, image optimization, cloud storage, multer alternative, sharp, webp conversion, stream processing, multi-cloud" />
-    <meta name="author" content="Rinkal Kumar" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://upfly-frontend.vercel.app/" />
-
-    <!-- Favicon -->
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://upfly-frontend.vercel.app/" />
+    <meta name="twitter:title" content="Upfly - Complete File Handling Middleware for Express" />
+    <meta name="twitter:description" content="The all-in-one Express middleware that turns file upload chaos into a single line of code. Stream-based processing, automatic image optimization, and multi-cloud storage." />
+    <meta name="twitter:image" content="https://upfly-frontend.vercel.app/upfly-twitter-card.png" />
+    <meta name="twitter:image:alt" content="Upfly - Complete File Handling Solution for Express.js" />
+    <meta name="twitter:creator" content="@upflyjs" />
+    <meta name="twitter:site" content="@upflyjs" />
+    
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/upfly-logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/upfly-logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="msapplication-TileColor" content="#2563eb" />
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.npmjs.com" />
+    <link rel="dns-prefetch" href="https://github.com" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Upfly",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cross-platform",
+      "description": "Complete file handling middleware for Express.js with stream-based processing, automatic image optimization, and multi-cloud storage support.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Rinkal Kumar"
+      },
+      "url": "https://upfly-frontend.vercel.app/",
+      "sameAs": [
+        "https://github.com/ramin-010/upfly",
+        "https://www.npmjs.com/package/upfly"
+      ],
+      "softwareVersion": "1.0.0",
+      "screenshot": "https://upfly-frontend.vercel.app/upfly-logo.png",
+      "releaseNotes": "Initial release with stream-based file handling, image optimization, and multi-cloud storage support.",
+      "featureList": [
+        "Stream-based file processing",
+        "Automatic image optimization with Sharp & WebP",
+        "Multi-cloud storage (AWS S3, Cloudinary, Google Cloud Storage)",
+        "Production-ready error handling",
+        "Express middleware integration",
+        "Zero-config setup"
+      ],
+      "programmingLanguage": "JavaScript",
+      "runtimePlatform": "Node.js"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Upfly",
+      "url": "https://upfly-frontend.vercel.app/",
+      "description": "Complete file handling middleware for Express.js"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Upfly",
+      "url": "https://upfly-frontend.vercel.app/",
+      "logo": "https://upfly-frontend.vercel.app/upfly-logo.png",
+      "sameAs": [
+        "https://github.com/ramin-010/upfly",
+        "https://www.npmjs.com/package/upfly",
+        "https://twitter.com/upflyjs"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Technical Support",
+        "url": "https://github.com/ramin-010/upfly/issues"
+      }
+    }
+    </script>
+    
+    <!-- Additional Performance Hints -->
+    <link rel="preload" as="script" href="/src/main.tsx" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Accessibility: Skip to main content link -->
+    <noscript>
+      <div style="padding: 20px; text-align: center; background: #fef3c7; border: 2px solid #f59e0b;">
+        <strong>JavaScript Required:</strong> This application requires JavaScript to be enabled for full functionality.
+      </div>
+    </noscript>
   </body>
 </html>
