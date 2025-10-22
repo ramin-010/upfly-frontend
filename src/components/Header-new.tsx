@@ -71,7 +71,7 @@ const Header: React.FC = () => {
               </div>
               <div>
                 <h1 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">Upfly</h1>
-                <p className="text-xs md:text-sm text-gray-500 font-medium hidden sm:block">Enterprise File Upload Middleware</p>
+                <p className="text-xs md:text-sm text-gray-500 font-medium hidden sm:block">Complete File Handling Middleware</p>
               </div>
             </motion.div>
 
