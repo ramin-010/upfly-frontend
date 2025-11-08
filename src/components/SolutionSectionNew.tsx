@@ -44,7 +44,7 @@ const SolutionSection: React.FC = () => {
 app.post('/upload',
   upflyUpload({
     fields: {
-      avatar: { 
+      "avatar": { 
         output: 'disk',        // or 'memory'
         format: 'webp',        // auto conversion
         quality: 80,
@@ -65,7 +65,7 @@ app.post('/upload',
           code: `app.post('/cloud-upload',
   upflyUpload({
     fields: {
-      documents: {
+      "documents": {
         cloudStorage: true,
         cloudProvider: 'cloudinary',
         cloudConfig: {
@@ -87,7 +87,7 @@ app.post('/upload',
           code: `app.post('/s3-upload',
   upflyUpload({
     fields: {
-      documents: {
+      "documents": {
         cloudStorage: true,
         cloudProvider: 's3',
         cloudConfig: {
@@ -109,7 +109,7 @@ app.post('/upload',
           code: `app.post('/gcs-upload',
   upflyUpload({
     fields: {
-      documents: {
+      "documents": {
         cloudStorage: true,
         cloudProvider: 'gcs',
         cloudConfig: {
@@ -133,7 +133,7 @@ app.post('/upload',
       code: `app.post('/reliable-upload',
   upflyUpload({
     fields: {
-      images: {
+      "images": {
         output: 'memory',      // or 'disk'
         format: 'webp',
         quality: 80,
@@ -500,7 +500,7 @@ app.post('/upload',
                   className="bg-gradient-to-b  from-[#F40009] via-[#E60008] to-[#C70008] rounded-2xl md:rounded-3xl p-6 md:p-10 lg:p-12 mt-6 md:mt-10 text-white relative overflow-hidden text-center"
                   initial={{ opacity: 0, y: 30 }} 
                   whileInView={{ opacity: 1, y: 0 }} 
-                  transition={{ duration: 0.6, delay: 0.6 }} 
+                  transition={{ duration: 0.3, delay: 0.3 }} 
                   viewport={{ once: true }}
                 >
                   <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-white opacity-5 rounded-full -mr-32 md:-mr-48 -mt-32 md:-mt-48"></div>

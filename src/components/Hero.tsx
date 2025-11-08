@@ -18,7 +18,7 @@ const Hero = () => {
       description: "Convert images to WebP. That's it.",
       code: `  upflyUpload({
     fields: {
-      avatar: { 
+      "avatar": { 
         format: 'webp',        // Convert to WebP
         quality: 80,           // Set quality
         output: 'memory'       // 'memory' or 'disk'
@@ -34,7 +34,7 @@ const Hero = () => {
       description: "Direct cloud upload. Get URL instantly.",
       code: `upflyUpload({
     fields: {
-      avatar: { 
+      "avatar": { 
         format: 'webp',
         cloudStorage: true,    
         cloudProvider: 'cloudinary',  // 'aws' | 'gcs' | 'cloudinary'
@@ -51,7 +51,7 @@ const Hero = () => {
       description: "Automatic backup fallback. Never lose files.",
       code: `upflyUpload({
   fields: {
-    avatar: { 
+    "avatar": { 
       cloudStorage: true,
       cloudProvider: 'aws',
       cloudConfig : {},
@@ -68,9 +68,9 @@ const Hero = () => {
       description: "Different rules per field. One middleware.",
       code: `upflyUpload({
   fields: {
-    photos: { format: 'webp', cloudStorage: true , cloudProvider : 'aws'},
-    avatar: { cloudStorage: true , cloudProvider : 'cloudinary', keepOriginal : true },
-    docs: { output: 'disk' },
+    "photos": { format: 'webp', cloudStorage: true , cloudProvider : 'aws'},
+    "avatar": { cloudStorage: true , cloudProvider : 'cloudinary', keepOriginal : true },
+    "docs": { output: 'disk' },
   },
   outputDir : './uploads',
   safeFile : true

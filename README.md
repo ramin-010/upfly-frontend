@@ -49,7 +49,7 @@ const { upflyUpload } = require('upfly');
 app.post('/upload', 
   upflyUpload({
     fields: {
-      avatar: { 
+      "avatar": { 
         cloudStorage: true,
         cloudProvider: 'cloudinary',
         cloudConfig: { cloud_name: 'demo', api_key: 'key', api_secret: 'secret' }
@@ -114,7 +114,7 @@ const app = express();
 app.post('/upload',
   upflyUpload({
     fields: {
-      images: { format: 'webp', quality: 80 }  // Auto-optimized!
+      "images": { format: 'webp', quality: 80 }  // Auto-optimized!
     }
   }),
   (req, res) => res.json({ files: req.files })
@@ -138,7 +138,7 @@ curl -X POST -F "images=@photo.jpg" http://localhost:3000/upload
 ```js
 upflyUpload({
   fields: {
-    avatar: {
+    "avatar": {
       cloudStorage: true,
       cloudProvider: 'cloudinary',
       cloudConfig: {
@@ -161,7 +161,7 @@ upflyUpload({
 ```js
 upflyUpload({
   fields: {
-    documents: {
+    "documents": {
       cloudStorage: true,
       cloudProvider: 's3',
       cloudConfig: {
@@ -183,9 +183,9 @@ upflyUpload({
 ```js
 upflyUpload({
   fields: {
-    thumbnails: { format: 'webp', quality: 60, output: 'memory' },
-    originals: { format: 'jpeg', quality: 95, output: 'disk' },
-    previews: { 
+    "thumbnails": { format: 'webp', quality: 60, output: 'memory' },
+    "originals": { format: 'jpeg', quality: 95, output: 'disk' },
+    "previews": { 
       cloudStorage: true,
       cloudProvider: 'gcs',
       cloudConfig: {
@@ -305,7 +305,7 @@ Upfly is built for production. It handles errors gracefully so your app never cr
 ```js
 upflyUpload({
   fields: {
-    images: { format: 'webp', quality: 80 }
+    "images": { format: 'webp', quality: 80 }
   },
   safeFile: true  // Enable backup system
 })
@@ -367,7 +367,7 @@ if (req.files.images[0]._metadata?.isBackupFallback) {
 
 upflyUpload({
   fields: {
-    photos: { format: 'webp', quality: 75 }  // Optimized settings
+    "photos": { format: 'webp', quality: 75 }  // Optimized settings
   },
   limit: 50 * 1024 * 1024  // 50MB limit
 })
@@ -433,7 +433,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
 // After  
 app.post('/upload',
   upflyUpload({
-    fields: { image: { output: 'disk' } }
+    fields: { "image": { output: 'disk' } }
   }),
   (req, res) => res.json({ file: req.file })
 );
@@ -446,7 +446,7 @@ app.post('/upload',
 // After: One configuration object
 upflyUpload({
   fields: {
-    images: { format: 'webp', quality: 80 }
+    "images": { format: 'webp', quality: 80 }
   }
 })
 ```
@@ -464,7 +464,7 @@ app.post('/convert',
   upload.single('image'),
   upflyConvert({
     fields: {
-      image: { format: 'webp', quality: 80, output: 'disk' }
+      "image": { format: 'webp', quality: 80, output: 'disk' }
     }
   }),
   (req, res) => {

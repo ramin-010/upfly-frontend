@@ -25,7 +25,7 @@ const { upflyUpload } = require('upfly');
 app.post('/upload',
   upflyUpload({
     fields: {
-      avatar: {
+      "avatar": {
         cloudStorage: true,
         cloudProvider: 'cloudinary',
         cloudConfig: {
