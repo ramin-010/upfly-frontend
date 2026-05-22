@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, ExternalLink, Zap, Shield, TrendingUp } from 'lucide-react';
+import { Menu, X, Github, ExternalLink, Zap, Shield, TrendingUp, ChevronDown } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDocsDropdownOpen, setIsDocsDropdownOpen] = useState(false);
+  const [isMobileDocsOpen, setIsMobileDocsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +16,17 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigation = [
-    { name: 'Features', href: '#features', external: false },
-    { name: 'Architecture', href: '#architecture', external: false },
-    { name: 'Install', href: '#npm-i', external: false },
-    { name: 'Start Building', href: '#build', external: false }
+  const mainNavigation = [
+    { name: 'Features', href: '/#features' },
+    { name: 'Architecture', href: '/#architecture' },
+    { name: 'Install', href: '/#npm-i' }
+  ];
+
+  const docsNavigation = [
+    { name: 'Quick Start', href: '/quick-start', description: 'Get up and running in 5 minutes' },
+    { name: 'Cloud Setup', href: '/cloud-setup', description: 'Configure S3, Cloudinary & GCS' },
+    { name: 'Error Handling', href: '/error-handling', description: 'Automatic fallback & safeFile' },
+    { name: 'API Reference', href: '/api-reference', description: 'Middleware schema & Types details' }
   ];
 
   const trustSignals = [
@@ -63,42 +71,79 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <div className="relative">
+              <a href="/" className="relative block">
                 <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
                   <Zap className="text-white" size={20} />
                 </div>
                 <div className="absolute -top-1 -right-1 w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full border-2 border-white"></div>
-              </div>
+              </a>
               <div>
-                <h1 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">Upfly</h1>
-                <p className="text-xs md:text-sm text-gray-500 font-medium hidden sm:block">Complete File Handling Middleware</p>
+                <a href="/">
+                  <h1 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">Upfly</h1>
+                  <p className="text-xs md:text-sm text-gray-500 font-medium hidden sm:block">Complete File Handling Middleware</p>
+                </a>
               </div>
             </motion.div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navigation.map((item) => (
+              {mainNavigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
                   className="px-4 py-2 text-gray-600 hover:text-gray-900 font-medium transition-all duration-200 rounded-lg hover:bg-gray-50 relative group"
                 >
                   {item.name}
                   <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-8 group-hover:left-1/2 transform -translate-x-1/2"></span>
                 </a>
               ))}
+
+              {/* Docs Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsDocsDropdownOpen(true)}
+                onMouseLeave={() => setIsDocsDropdownOpen(false)}
+              >
+                <button
+                  className="flex items-center gap-1 px-4 py-2 text-gray-600 hover:text-gray-900 font-medium transition-all duration-200 rounded-lg hover:bg-gray-50 cursor-pointer focus:outline-none"
+                >
+                  Documentation
+                  <ChevronDown size={16} className={`transition-transform duration-200 ${isDocsDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                <AnimatePresence>
+                  {isDocsDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute left-0 mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-xl py-3 z-50 grid grid-cols-1 gap-1"
+                    >
+                      {docsNavigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="px-4 py-2.5 hover:bg-gray-50 flex flex-col transition-colors rounded-lg mx-2"
+                        >
+                          <span className="text-sm font-semibold text-gray-900">{item.name}</span>
+                          <span className="text-xs text-gray-500 mt-0.5">{item.description}</span>
+                        </a>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </nav>
 
             {/* CTA Section */}
             <div className="hidden lg:flex items-center gap-3">
-              {/* GitHub Link - Restored */}
+              {/* GitHub Link */}
               <a
                 href="https://github.com/ramin-010/upfly"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-2 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200 group"
+                className="flex items-center gap-3 px-4 py-2 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200 group border border-gray-200"
               >
                 <Github size={20} className="text-gray-700 group-hover:text-gray-900" />
                 <div className="flex flex-col">
@@ -113,23 +158,13 @@ const Header: React.FC = () => {
                 href="https://www.npmjs.com/package/upfly"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-4 bg-red-50 hover:bg-red-100 rounded-lg transition-all duration-200 group border border-red-200"
+                className="flex items-center gap-2 px-4 py-2.5 bg-red-50 hover:bg-red-100 rounded-lg transition-all duration-200 group border border-red-200"
               >
                 <svg className="w-5 h-5" viewBox="0 0 780 250" fill="#CB3837">
                   <path d="M240,250h100v-50h100V0H240V250z M340,50h50v100h-50V50z M480,0v200h100V50h50v150h50V50h50v150h50V0H480z M0,200h100V50h50v150h50V0H0V200z"/>
                 </svg>
-                <span className="text-lg font-semibold text-red-700">npm</span>
+                <span className="text-base font-semibold text-red-700">npm</span>
               </a>
-
-              {/* Primary CTA */}
-              {/* <motion.button 
-                className="btn-primary btn-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById('install')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Start Building
-              </motion.button> */}
             </div>
 
             {/* Mobile Menu Button */}
@@ -154,7 +189,7 @@ const Header: React.FC = () => {
             >
               <div className="container py-4 md:py-6">
                 <nav className="flex flex-col gap-1">
-                  {navigation.map((item) => (
+                  {mainNavigation.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
@@ -164,6 +199,42 @@ const Header: React.FC = () => {
                       {item.name}
                     </a>
                   ))}
+
+                  {/* Mobile Docs Collapsible */}
+                  <div className="border-t border-gray-100 mt-2 pt-2">
+                    <button
+                      onClick={() => setIsMobileDocsOpen(!isMobileDocsOpen)}
+                      className="w-full flex items-center justify-between px-4 py-2.5 text-gray-700 font-semibold rounded-lg hover:bg-gray-50"
+                    >
+                      <span>Guides & Docs</span>
+                      <ChevronDown size={18} className={`transition-transform duration-200 ${isMobileDocsOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    <AnimatePresence>
+                      {isMobileDocsOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="overflow-hidden pl-4 flex flex-col gap-1 mt-1"
+                        >
+                          {docsNavigation.map((item) => (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              className="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200"
+                              onClick={() => {
+                                setIsMenuOpen(false);
+                                setIsMobileDocsOpen(false);
+                              }}
+                            >
+                              {item.name}
+                            </a>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </nav>
                 
                 <div className="flex flex-col gap-3 pt-4 border-t border-gray-200 mt-4">
@@ -194,16 +265,6 @@ const Header: React.FC = () => {
                       <span className="text-sm text-red-700 font-medium">npm</span>
                     </motion.a>
                   </div>
-                  
-                  {/* <button 
-                    className="btn-primary w-full"
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      document.getElementById('install')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    Start Building
-                  </button> */}
                 </div>
               </div>
             </motion.div>
